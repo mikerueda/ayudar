@@ -1,0 +1,30 @@
+:root {
+  --color-secondary-100: #f6dadf;
+  --color-secondary-200: #e5bace;
+  --color-primary-900: #ff4653;
+  --color-primary-950: #ef0d50;
+  --color-secondary-900: #e1f2f7;
+  --color-secondary-950: #4b9fe1;
+}
+
+body {
+  background-color: var(--color-secondary-900);
+  padding-top: 80px;
+}
+
+.icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
