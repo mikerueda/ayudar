@@ -1,23 +1,8 @@
-import { FC, ReactElement } from 'react'
+import { FC, ReactElement, useState, useEffect } from 'react'
+import { getUsers } from '../services/firebase'
+import { User } from '../services/firebase'
 
-interface UserBox {
-  id: number
-  ative: boolean
-  avatarUrl: string
-  contact: {}
-  description: string
-  name: string
-  occupation: string
-  paymentMethods: {
-    name: string
-    value: string
-  }[]
-  profiles: {}
-  received: number
-  target: number
-}
-
-const UserBox: FC<UserBox> = ({
+const UserBox: FC<User> = ({
   avatarUrl,
   name,
   occupation,
@@ -52,103 +37,13 @@ const UserBox: FC<UserBox> = ({
   </li>
 )
 
-const users = [
-  {
-    id: 12345,
-    ative: true,
-    avatarUrl: 'https://picsum.photos/200',
-    contact: {
-      address: 'Calle 123',
-      mail: 'text@test.com',
-      phone: '1122334455'
-    },
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam volutpat nulla a quam laoreet, ac luctus odio tempor. Proin tristique diam vel eleifend gravida. Donec sit amet finibus arcu. Sed ut molestie purus.',
-    name: 'Fulano de tal',
-    occupation: 'Empleado de comercio',
-    paymentMethods: [
-      {
-        name: 'cbu',
-        value: '12937128736128372'
-      },
-      {
-        name: 'mercadopago',
-        value: 'https://...'
-      }
-    ],
-    profiles: {
-      facebook: 'https://...,',
-      instagram: 'https://...,',
-      twitter: 'https://...'
-    },
-    received: 0,
-    target: 15000
-  },
-  {
-    id: 12345,
-    ative: true,
-    avatarUrl: 'https://picsum.photos/200',
-    contact: {
-      address: 'Calle 123',
-      mail: 'text@test.com',
-      phone: '1122334455'
-    },
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam volutpat nulla a quam laoreet, ac luctus odio tempor. Proin tristique diam vel eleifend gravida. Donec sit amet finibus arcu. Sed ut molestie purus.',
-    name: 'Fulano de tal',
-    occupation: 'Empleado de comercio',
-    paymentMethods: [
-      {
-        name: 'cbu',
-        value: '12937128736128372'
-      },
-      {
-        name: 'mercadopago',
-        value: 'https://...'
-      }
-    ],
-    profiles: {
-      facebook: 'https://...,',
-      instagram: 'https://...,',
-      twitter: 'https://...'
-    },
-    received: 0,
-    target: 15000
-  },
-  {
-    id: 12345,
-    ative: true,
-    avatarUrl: 'https://picsum.photos/200',
-    contact: {
-      address: 'Calle 123',
-      mail: 'text@test.com',
-      phone: '1122334455'
-    },
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam volutpat nulla a quam laoreet, ac luctus odio tempor. Proin tristique diam vel eleifend gravida. Donec sit amet finibus arcu. Sed ut molestie purus.',
-    name: 'Fulano de tal',
-    occupation: 'Empleado de comercio',
-    paymentMethods: [
-      {
-        name: 'cbu',
-        value: '12937128736128372'
-      },
-      {
-        name: 'mercadopago',
-        value: 'https://...'
-      }
-    ],
-    profiles: {
-      facebook: 'https://...,',
-      instagram: 'https://...,',
-      twitter: 'https://...'
-    },
-    received: 0,
-    target: 15000
-  }
-]
-
 const UsersList = () => {
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    getUsers(setUsers) // listener, trigger on every database change
+  }, [])
+
   return (
     <ul className="mb-4 px-4 max-w-lg mx-auto">
       {users.map((e, i) => (
