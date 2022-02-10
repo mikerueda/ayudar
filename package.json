@@ -37,7 +37,7 @@
     "jest": "^25.1.0",
     "next-compose-plugins": "^2.2.0",
     "next-manifest": "^3.0.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "pem": "^1.14.4",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
